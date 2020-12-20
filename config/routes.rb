@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root "airplanes#index"
 
   get "/airplanes", to: "airplanes#index"
+  get "/seats", to: "airplanes#seats"
+  post "/seats", to: "airplanes#seats"
 end

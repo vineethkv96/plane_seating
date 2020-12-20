@@ -1,1 +1,38 @@
-<h2 class="middle">Airplane Seating Algorithm</h2>
+<h2 class="text-center">Airplane Seating Algorithm</h2>
+<div class="row">
+  <div class="width-6">
+    <h4 class="text-center">Plane seat generator</h4>
+      <div class="form-box">
+        <%= form_with url: "/", method: :get do |form| %>
+          <%= form.label :seats, "Enter seat arrangement json (Example: '[[3,4], [4,5], [2,3], [3,4]]')" %>
+          <%= form.text_field :seats %>
+          <%= form.label :passenger, "Enter the no.of passengers" %>
+          <%= form.text_field :passenger %>
+          <label class="error hidden">Enter values</label>
+          <%= form.submit "Submit" %>
+        <% end %>
+      </div>
+  </div>
+  <div class="width-6">
+    <h4 class="text-center">Seat location</h4>
+    <div class="plane">
+    </div>
+  </div>
+</div>
+
+<script>
+  $form = $('form');
+  $form.on('submit', function(e){
+    e.preventDefault();
+    seat = $form.find('input#seats').val();
+    passenger = $form.find('input#passenger').val();
+    seats = jQuery.parseJSON(seat);
+    $('input[type="submit"]').prop('disabled', false);
+    // $.ajax({
+    //   type: "post",
+    //   url: "/seats",
+    //   data: jQuery.param({ field1: seat, field2 : passenger})
+    // }).done(function() {
+    // });
+  });
+</script>
