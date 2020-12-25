@@ -9,14 +9,13 @@
           <%= form.label :passenger, "Enter the no.of passengers" %>
           <%= form.text_field :passenger %>
           <label class="error hidden">Enter values</label>
-          <%= form.submit "Submit" %>
+          <%= form.submit "Submit", class: "form-submit" %>
         <% end %>
       </div>
   </div>
   <div class="width-6">
     <h4 class="text-center">Seat location</h4>
-    <div class="plane">
-    </div>
+    <div class="plane"></div>
   </div>
 </div>
 
@@ -26,13 +25,26 @@
     e.preventDefault();
     seat = $form.find('input#seats').val();
     passenger = $form.find('input#passenger').val();
-    seats = jQuery.parseJSON(seat);
-    $('input[type="submit"]').prop('disabled', false);
-    // $.ajax({
-    //   type: "post",
-    //   url: "/seats",
-    //   data: jQuery.param({ field1: seat, field2 : passenger})
-    // }).done(function() {
-    // });
+    var ajaxReq = $.ajax("/", 
+      {
+        dataType: 'html', // type of response data
+        data: {seats: seat, passenger: passenger }
+      });
+    ajaxReq.done(function (data) { // succuss callback
+      $('input[type="submit"]').prop('disabled', false);
+      display_seats(data, 'success');
+    });
+    ajaxReq.fail(function (jqXhr, textStatus, errorMessage) { // error callback 
+      $('input[type="submit"].form-submit').prop('disabled', false);
+      display_seats(errorMessage, 'error');
+    });
   });
+
+  function display_seats(data, status) {
+    if(status == "success"){
+      $('.plane').html(data);
+    }else {
+      $('.plane').html('<p>'+data+'</p>');
+    }
+  }
 </script>
