@@ -1,0 +1,26 @@
+<% if seats.class == Array %>
+  <table>
+    <tbody>
+      <% seats.each do |row| %>
+        <tr>
+          <% row.each do |columns| %>
+            <% if columns.nil? %>
+              <td></td>
+            <% else %>
+              <td>
+                <% columns.each do |column| %>
+                  <% column = column.split('##')%>
+                  <span class="cell <%= column[1] %>"><%= column[0] %></span>
+                <% end %>
+              </td>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="error">
+    <%= seats %>
+  </div>
+<% end %>

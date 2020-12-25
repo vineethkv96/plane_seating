@@ -26,10 +26,39 @@ div.row {
   .plane {
     margin: 0 auto;
     height: 80vh;
-    width: 60%;
+    min-width: 20em;
+    max-width: 50em;
+    width: auto;
     background-color: #999999;
     border: 1px solid rgb(44, 30, 30);
     border-radius: 50% 50% 10% 10%;
+    table {
+      margin: 40vh auto;
+      tbody {
+        tr {
+          height: 30px;
+          td {
+            padding: 0 1em;
+            span.cell {
+              display: inline-block;
+              padding-top: 5px;
+              border: 1px solid black;
+              width: 30px;
+              height: 25px;
+              text-align: center;
+              &.blue {
+                background-color: #4F81BD;
+              }
+            }
+          }
+        }
+      }
+    }
+    .error {
+      text-align: center;
+      margin-top: 40vh;
+      color: red;
+    }
   }
   .form-box {
     margin: 0 auto;
