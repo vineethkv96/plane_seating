@@ -1,10 +1,8 @@
-# plane_seating
+# Airplane seating algorithm
 
-Airplane seating algorithm
+#### ruby version = 2.5.3
 
-## ruby version = 2.5,3
-
-## Rails version = 6.1.0
+#### Rails version = 6.1.0
 
 ### Run
 
@@ -13,13 +11,13 @@ Airplane seating algorithm
 - bundle install
 - start rails server (rails s)
 
-#### output images
+### output images
 
 ![initial_load](img_1.png)
 
 ![output](img_2.png)
 
 
-## run rspec
+### run rspec
 
 - rspec spec
